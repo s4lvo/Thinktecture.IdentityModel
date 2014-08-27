@@ -34,7 +34,7 @@ namespace Thinktecture.IdentityModel.Tokens
             if (_validationParams != null)
             {
                 var jwt = token as JwtSecurityToken;
-                var list = new List<ClaimsIdentity>(this.ValidateToken(jwt, _validationParams).Identities);
+                var list = new List<ClaimsIdentity>(this.ValidateToken(jwt.RawData, _validationParams, out token).Identities);
                 return list.AsReadOnly();
             }
             else

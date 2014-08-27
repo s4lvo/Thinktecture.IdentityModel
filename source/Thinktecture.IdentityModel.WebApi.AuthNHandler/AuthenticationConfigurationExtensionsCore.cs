@@ -11,6 +11,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Security.Tokens;
 using Thinktecture.IdentityModel.Constants;
 using Thinktecture.IdentityModel.Tokens;
+using JwtConstants = Thinktecture.IdentityModel.Constants.JwtConstants;
 
 namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
 {
@@ -43,8 +44,8 @@ namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
         {
             var validationParameters = new TokenValidationParameters()
             {
-                AllowedAudience = audience,
-                SigningToken = new BinarySecretSecurityToken(Convert.FromBase64String(signingKey)),
+                ValidAudience = audience,
+                IssuerSigningToken = new BinarySecretSecurityToken(Convert.FromBase64String(signingKey)),
                 ValidIssuer = issuer,
             };
 
@@ -65,8 +66,8 @@ namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
         {
             var validationParameters = new TokenValidationParameters()
             {
-                AllowedAudience = audience,
-                SigningToken = new BinarySecretSecurityToken(Convert.FromBase64String(signingKey)),
+                ValidAudience = audience,
+                IssuerSigningToken = new BinarySecretSecurityToken(Convert.FromBase64String(signingKey)),
                 ValidIssuer = issuer,
             };
 
@@ -86,8 +87,8 @@ namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
         {
             var validationParameters = new TokenValidationParameters()
             {
-                AllowedAudience = audience,
-                SigningToken = new X509SecurityToken(signingCertificate),
+                ValidAudience = audience,
+                IssuerSigningToken = new X509SecurityToken(signingCertificate),
                 ValidIssuer = issuer,
             };
 
@@ -108,8 +109,8 @@ namespace Thinktecture.IdentityModel.WebApi.Authentication.Handler
         {
             var validationParameters = new TokenValidationParameters()
             {
-                AllowedAudience = audience,
-                SigningToken = new X509SecurityToken(signingCertificate),
+                ValidAudience = audience,
+                IssuerSigningToken = new X509SecurityToken(signingCertificate),
                 ValidIssuer = issuer,
             };
 
